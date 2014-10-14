@@ -7,8 +7,8 @@
 ## Author: jensep@gmail.com
 
 function pullWeb {
-	wget "https://raw.githubusercontent.com/siigna/web/master/index.html" -O html #/srv/web/siigna
-	wget "https://raw.githubusercontent.com/siigna/web/master/target/scala-2.11/web-fastopt.js" -O js #/srv/web/target/scala-2.11/web-fastopt.js
+	wget "https://raw.githubusercontent.com/siigna/web/master/index.html" -O /srv/siigna/web/index.html
+	wget "https://raw.githubusercontent.com/siigna/web/master/target/scala-2.11/web-fastopt.js" -O js /srv/siigna/web/target/scala-2.11/web-fastopt.js
 }
 
 nc -lk -p 8080 | while read line
