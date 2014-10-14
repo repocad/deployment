@@ -4,6 +4,8 @@
 ## A script for deploying the siigna website by 
 ## listening for connections and pulling from GitHub
 ##
+## Thanks to http://stackoverflow.com/questions/17990099/run-a-command-conditionally-with-netcat-and-grep
+##
 ## Author: jensep@gmail.com
 
 function pullWeb {
