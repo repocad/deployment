@@ -9,14 +9,19 @@
 ## Author: jensep@gmail.com
 
 function pullWeb {
-	wget "https://raw.githubusercontent.com/siigna/web/master/index.html" -O /srv/siigna/web/index.html
-	wget "https://raw.githubusercontent.com/siigna/web/master/target/scala-2.11/web-fastopt.js" -O /srv/siigna/web/target/scala-2.11/web-fastopt.js
+	DIR=`pwd`
+	cd /srv/siigna/web
+	git pull
+	git checkout -f
+	cd $DIR
 }
 
-nc -lk -p 8080 | while read line
+while true
 do
-	match=$(echo $line | grep -c 'keep-alive')
-	if [ $match -eq 1 ] ; then
+	nc -lk -p 8080 | grep -i 'Host: siigna.com' | while read unused
+	do
+		echo "Pulling web"
 		pullWeb
-	fi
+		echo "Success"
+	done
 done
