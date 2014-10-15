@@ -18,7 +18,10 @@ function pullWeb {
 
 while true
 do
-	nc -lk -p 8080 | grep -i 'Host: siigna.com' | while read unused
+	echo -e 'HTTP/1.1 200 OK\r\nEOF' | \
+	nc -q 1 -l -p 8080 | \
+	grep -i 'Host: siigna.com' | \
+	while read unused
 	do
 		echo "Pulling web"
 		pullWeb
